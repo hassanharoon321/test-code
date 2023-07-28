@@ -3,7 +3,7 @@ import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../firebase";
 import { useForm } from "react-hook-form";
 import Loader from "./Loader";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Form = ({ onSave }) => {
