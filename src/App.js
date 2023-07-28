@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Form from "./Components/Form";
+import DisplayData from "./Components/DisplayData";
+import { ToastContainer } from "react-toastify";
 
-function App() {
+const App = () => {
+  const [storedData, setStoredData] = useState({});
+
+  const handleSaveData = (data) => {
+    setStoredData(data);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      className="bg-gray-50 flex justify-center p-5"
+      style={{ height: "100vh" }}
+    >
+      <div className="w-2/5 flex items-start justify-center bg-white shadow-sm mt-3 py-3 rounded-lg">
+        {Object.keys(storedData).length > 0 ? (
+          <DisplayData data={storedData} setStoredData={setStoredData} />
+        ) : (
+          <Form onSave={handleSaveData} />
+        )}
+      </div>
+      <ToastContainer />
     </div>
   );
-}
+};
 
 export default App;
